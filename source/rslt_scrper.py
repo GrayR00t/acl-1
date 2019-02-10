@@ -42,10 +42,11 @@ def rslt(user, password):
             'Credit': credit,
             'Grade': Grade
         }'''
-
+    lst =[]
+    lst1 =[]
     for i in range (len(table1)):
         num =0
-        lst =[]
+        
         #print(len(table1[i].find_all('tr'))) 
         for row in table1[i].find_all('tr'):
 
@@ -55,18 +56,19 @@ def rslt(user, password):
             #print("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh")
             #print(len(td))
             #lst =[]
-            for i in td:
+            for j in td:
                 #print("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh")
                 #print(i)
                 #print('hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh')
-                #print(i.text.strip())
-                lst.append(i.text.strip())
+                #print(j.text.strip())
+                lst.append(j.text.strip())
+            #lst.append(lst1)
             #print(lst)    
             result['table'+str(num)] =lst 
-            num = num+1         
-
+            lst =[]
+            num = num+1            
     return result
-id1 = input('enter your roll no:')
-pass1 =input('enter password:')   
+#id1 = input('enter your roll no:')
+#pass1 =input('enter password:')   
 
-print(rslt(id1,pass1 ))
+#print(rslt('17EE01033','' ))

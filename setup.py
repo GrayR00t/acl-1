@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 setup(
     name='acl-iitbbs',
     version='0.1',
-    description='Fetch attendance from ERP and Pretty Print it on Terminal.',
+    description='Fetch attendance and result from ERP and Pretty Print it on Terminal.',
     author='Aman Pratap Singh',
     author_email='amanprtpsingh@gmail.com',
     url='https://github.com/apsknight/acl',
