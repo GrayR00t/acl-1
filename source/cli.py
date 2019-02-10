@@ -1,6 +1,7 @@
 import click
 import keyring
 import getpass
+from source.rslt_scrper import rslt
 from source.scrapper import attempt
 from tabulate import tabulate
 
@@ -19,17 +20,29 @@ def attendance(roll):
             
 
     # Fetch attendance from ERP and Pretty Print it on Terminal.
-    
-    response = attempt(roll, password)
-    
-    if not response:
-        click.secho('Invalid Credentials, Login failed.', fg='red', bold=True)
-    else:
-        table = make_table(response)
-        print(tabulate(table, headers=["Subject Name", "Attended", "Percentage"],
-                tablefmt="fancy_grid"))
+    num = int(input('Enter 0 for Result and 1 for Attendance:'))
+    if num ==1:
 
-def make_table(response):
+        response = attempt(roll, password)
+        
+        if not response:
+            click.secho('Invalid Credentials, Login failed.', fg='red', bold=True)
+        else:
+            table = attendance_table(response)
+            print(tabulate(table, headers=["Subject Name", "Attended", "Percentage"],
+                    tablefmt="fancy_grid"))
+    elif num ==0:
+        response_ = rslt(roll , password)
+        if not response:
+            click.secho('Invalid Credentials, Login failed.', fg='red', bold=True)
+        else:
+            table = result_table(response)
+            print(tabulate(table, headers=["Subject Code", "Subject Name", "L-T-P","Credit","Grade"],
+                    tablefmt="fancy_grid"))        
+
+                
+
+def attendance_table(response):
     result = list()
     for (code, data) in response.items():
         row = list()
@@ -39,3 +52,12 @@ def make_table(response):
         result.append(row)
 
     return result
+def result_table(response_):
+    result = list()
+    for i in range(len(response_.keys())):
+        result.append(response_["result"+str(i)])
+
+
+    return result    
+
+

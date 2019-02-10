@@ -1,7 +1,7 @@
 from robobrowser import RoboBrowser
 from bs4 import BeautifulSoup
 
-def attempt(user, password):
+def rslt(user, password):
     url = 'http://erp.iitbbs.ac.in'
     browser = RoboBrowser(history=False, parser='html.parser')
     response = browser.open(url)
@@ -66,5 +66,7 @@ def attempt(user, password):
             num = num+1         
 
     return result
+id1 = input('enter your roll no:')
+pass1 =input('enter password:')   
 
-print(attempt('17EE01033', 'jV6BGIhu'))
+print(rslt(id1,pass1 ))
