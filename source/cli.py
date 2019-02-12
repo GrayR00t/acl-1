@@ -31,7 +31,6 @@ def attendance(roll):
             print(tabulate(table, headers=["Subject Name", "Attended", "Percentage"],
                     tablefmt="fancy_grid"))
     elif num ==0:
-        #response_ = rslt(roll , password)
         if not response_:
             click.secho('Invalid Credentials, Login failed.', fg='red', bold=True)
         else:

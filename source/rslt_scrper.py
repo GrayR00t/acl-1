@@ -27,48 +27,18 @@ def rslt(user, password):
 
 
     result = dict()
-    '''
-    for row in heading: # Don't need headers
-        td = row.find_all('td')
-        code = td[0].text.strip()
-        subject = td[1].text.strip()
-        L_T_P = td[2].text.strip()
-        credit= td[3].text.strip()
-        Grade = td[4].text.strip()
-        result['heading'] = {
-            'Code' :code,
-            'name' : subject,
-            'L_T_P': L_T_P,
-            'Credit': credit,
-            'Grade': Grade
-        }'''
+
     lst =[]
     lst1 =[]
     for i in range (len(table1)):
-        num =0
-        
-        #print(len(table1[i].find_all('tr'))) 
+        num =0 
         for row in table1[i].find_all('tr'):
 
             td = row.find_all('td')
-            #print("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh")
-            #print(td)
-            #print("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh")
-            #print(len(td))
-            #lst =[]
             for j in td:
-                #print("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh")
-                #print(i)
-                #print('hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh')
-                #print(j.text.strip())
-                lst.append(j.text.strip())
-            #lst.append(lst1)
-            #print(lst)    
+                lst.append(j.text.strip())   
             result['table'+str(num)] =lst 
             lst =[]
             num = num+1            
     return result
-#id1 = input('enter your roll no:')
-#pass1 =input('enter password:')   
 
-#print(rslt('17EE01033','' ))
